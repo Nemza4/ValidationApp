@@ -1,14 +1,77 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<!--
+  Generated template for the HomePage page.
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="secondary">
+    <ion-title>Form Validation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+ 
+ 
+  <ion-content padding>
+
+  <form *ngIf="login" [formGroup]="login" (ngLogin)="submit()">
+ 
+ 
+      <ion-item>
+          <ion-label > <ion-icon name="person"></ion-icon></ion-label>
+          <ion-input formControlName="name"  type="text"  placeholder="Name"></ion-input>
+          </ion-item>
+ 
+          <ion-item *ngIf="login.controls.name.invalid && login.controls.name.dirty">
+              <p>Please enter Name</p>
+ 
+            </ion-item>
+       <ion-item>
+            <ion-label ><ion-icon name="contacts"></ion-icon></ion-label>
+            <ion-input formControlName="username" placeholder="User Name"  type="text"></ion-input>
+ 
+        </ion-item>
+        <ion-item *ngIf="login.controls.username.invalid && login.controls.username.dirty">
+            <p>Please enter username</p>
+ 
+          </ion-item>
+ 
+ 
+          <ion-item>
+            <ion-label ><ion-icon name="person-add"></ion-icon></ion-label>
+            <ion-input formControlName="age" placeholder="age"  type="number"></ion-input>
+ 
+        </ion-item>
+        <ion-item *ngIf="login.controls.age.invalid && login.controls.age.dirty">
+            <p>Please enter correct age</p>
+ 
+          </ion-item>
+ 
+ 
+ 
+          <ion-item>
+              
+              <ion-label><ion-icon name="at"></ion-icon></ion-label>
+              <ion-input formControlName="email"  placeholder="email"  type="text" [(ngModel)]="email"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="login.controls.email.invalid && login.controls.email.dirty">
+                <p>Please enter correct Email</p>
+ 
+              </ion-item>
+ 
+ 
+    <ion-item>
+      <ion-label><ion-icon name="unlock"></ion-icon></ion-label>
+      <ion-input formControlName="password"   placeholder="password"  type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="login.controls.password.invalid && login.controls.password.dirty">
+        <p>Please enter Password</p>
+ 
+      </ion-item>
+ 
+ 
+ <button style="background-color:blue;text-align: center;" ion-button (click)="submit()" [disabled]="login.invalid" > Register</button>
+ </form>
+ 
 </ion-content>
